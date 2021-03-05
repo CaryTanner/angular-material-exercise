@@ -1,0 +1,21 @@
+<div class="training-container" fxLayout fxLayoutAlign="center">
+  <mat-card
+    fxFlex.xs="100%"
+    fxFlex="400px "
+    fxLayout="column"
+    fxLayoutAlign="space-evenly center"
+  >
+    <mat-card-content>
+      <mat-progress-spinner
+        class="example-margin"
+        mode="determinate"
+        [value]="value"
+      >
+      </mat-progress-spinner>
+      <h1>{{ runningExercise.name }}</h1>
+      <h2 class="example-h2">{{ value }}%</h2>
+      <p>You can do it!</p>
+      <button mat-raised-button color="accent" (click)="onStop()">STOP</button>
+    </mat-card-content>
+  </mat-card>
+</div>

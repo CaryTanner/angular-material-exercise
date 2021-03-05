@@ -1,0 +1,64 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+
+>
+<h3>Log In</h3>
+  <mat-form-field appearance="legacy">
+    <input matInput type="email" placeholder="Email" formControlName="email" />
+    <mat-error
+      *ngIf="
+        loginForm.get('email').hasError('required') &&
+        loginForm.get('email').touched
+      "
+      >Email is required!</mat-error
+    >
+    <mat-error
+      *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched"
+      >Email is invalid!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="legacy" hintLabel="6 character minimum">
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+
+    <mat-error
+      *ngIf="
+        loginForm.get('password').hasError('required') &&
+        loginForm.get('password').touched
+      "
+      >Incorrect Password</mat-error
+    >
+    <mat-error
+      *ngIf="
+        loginForm.get('password').hasError('minLengthError') &&
+        loginForm.get('password').touched
+      "
+      >Minimum 6 characters!
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="!loginForm.valid"
+  >
+    Log In
+  </button>
+</form>

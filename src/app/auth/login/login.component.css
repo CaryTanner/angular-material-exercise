@@ -1,0 +1,12 @@
+form{
+    height: 80vh;
+}
+mat-form-field{
+   min-width: 300px;
+   margin: 12px 0;
+}
+
+button{
+    margin-top: 12px;
+    width: 300px;
+}

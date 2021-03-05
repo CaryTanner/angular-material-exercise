@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { WelcomeComponent } from './welcome/welcome.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { TrainingComponent } from './training/training.component';
+import { AuthGuardGuard } from './auth-guard.guard';
+
+const routes: Routes = [
+  { path: '', component: WelcomeComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'training', canActivate: [AuthGuardGuard], component: TrainingComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

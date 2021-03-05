@@ -1,0 +1,38 @@
+<mat-nav-list>
+  <a
+    *ngIf="loggedIn"
+    mat-list-item
+    class="sidenav-link-text"
+    [routerLink]="'/training'"
+    (click)="toggleSidenav()"
+  >
+    <mat-icon>fitness_center</mat-icon>Training</a
+  >
+  <a
+    mat-list-item
+    class="sidenav-link-text"
+    [routerLink]="'/signup'"
+    (click)="toggleSidenav()"
+    *ngIf="!loggedIn"
+  >
+    <mat-icon>face</mat-icon>Sign Up</a
+  >
+
+  <a
+    mat-list-item
+    class="sidenav-link-text"
+    [routerLink]="'/login'"
+    (click)="toggleSidenav()"
+    *ngIf="!loggedIn"
+  >
+    <mat-icon>login</mat-icon>Log In</a
+  >
+  <a
+    mat-list-item
+    class="sidenav-link-text"
+    *ngIf="loggedIn"
+    (click)="onLogOut()"
+  >
+    <mat-icon>logout</mat-icon>Log out</a
+  >
+</mat-nav-list>

@@ -1,0 +1,62 @@
+<form
+  [formGroup]="signupForm"
+  (ngSubmit)="onSubmit()"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+>
+<h3>Sign Up</h3>
+  <mat-form-field appearance="legacy">
+    <input matInput type="email" placeholder="Email" formControlName="email" />
+    <mat-error
+      *ngIf="
+        signupForm.get('email').hasError('required') &&
+        signupForm.get('email').touched
+      "
+      >Email is required!</mat-error
+    >
+    <mat-error
+      *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched"
+      >Email is invalid!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="legacy" hintLabel="6 character minimum">
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    <mat-hint align="end"
+      >{{ signupForm.get("password").value?.length }}/6</mat-hint
+    >
+    <mat-error>Must be at least 6 characters in length</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      formControlName="birthdate"
+      matInput
+      readonly
+      [max]="maxDate"
+      autocomplete="off"
+      placeholder="Birthdate"
+      [matDatepicker]="localPickerRef"
+      (click)="localPickerRef.open()"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="localPickerRef"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #localPickerRef></mat-datepicker>
+  </mat-form-field>
+  <mat-checkbox formControlName="terms">Agree to Terms and Conditions</mat-checkbox>
+  <button type="submit" mat-raised-button color="primary" [disabled]="!signupForm.valid">Sign Up</button>
+</form>

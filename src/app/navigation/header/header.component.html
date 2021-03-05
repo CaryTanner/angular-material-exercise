@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" fxLayoutAlign="space-between center">
+  <div fxFlex="30" fxLayout fxLayoutAlign="start center">
+    <div fxHide.gt-xs>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div [routerLink]="''">Logo</div>
+  </div>
+  <div fxFlex="70" fxLayoutAlign="end center" fxHide.xs>
+    <a
+      *ngIf="loggedIn"
+      [routerLinkActive]="'activeLink'"
+      [routerLink]="'/training'"
+      >Training</a
+    >
+    <a *ngIf="loggedIn" (click)="onLogOut()">Log Out</a>
+
+    <a
+      [routerLinkActive]="'activeLink'"
+      [routerLink]="'/signup'"
+      *ngIf="!loggedIn"
+      >Sign Up</a
+    >
+
+    <a
+      *ngIf="!loggedIn"
+      [routerLinkActive]="'activeLink'"
+      [routerLink]="'/login'"
+      >Log In</a
+    >
+  </div>
+</mat-toolbar>

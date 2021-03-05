@@ -1,0 +1,15 @@
+form{
+    height: 80vh;
+}
+mat-form-field{
+   min-width: 300px;
+   margin: 12px 0;
+}
+
+button{
+    width: 300px;
+}
+
+mat-checkbox{
+    margin-bottom: 24px;
+}

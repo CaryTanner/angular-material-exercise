@@ -1,0 +1,17 @@
+
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+    margin-right: 24px;
+    font-size: 16px;
+    transition: 200ms;
+}
+
+a:hover{
+    color: #ccc;
+}
+
+a.activeLink{
+    font-weight: bold;
+    color: #ccc;
+}
